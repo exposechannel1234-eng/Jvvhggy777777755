@@ -1,0 +1,8 @@
+{
+  "name": "SONIQ AI – AI Music Generator",
+  "description": "Professionele AI Electronic & Club Music Studio voor Deep House, Afro House, Latin House en Tech House met uitgebreide DJ-intro's/outro's, meertalige zang, exacte BPM & songstructuur controle en 4-stem track bewerking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
