@@ -13,6 +13,8 @@ create table if not exists public.user_profiles (
   updated_at timestamptz not null default now()
 );
 
+alter table public.user_profiles alter column credits_remaining set default 0;
+
 create table if not exists public.credit_transactions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -50,10 +52,6 @@ alter table public.playlists enable row level security;
 drop policy if exists "Users can read own profile" on public.user_profiles;
 create policy "Users can read own profile" on public.user_profiles
   for select to authenticated using (auth.uid() = id);
-
-drop policy if exists "Users can update own profile" on public.user_profiles;
-create policy "Users can update own profile" on public.user_profiles
-  for update to authenticated using (auth.uid() = id) with check (auth.uid() = id);
 
 drop policy if exists "Users can read own credit transactions" on public.credit_transactions;
 create policy "Users can read own credit transactions" on public.credit_transactions
